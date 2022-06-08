@@ -11,7 +11,7 @@ function NavMenu() {
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <div className="me-auto d-flex justify-content-between border w-100">
+          <Nav className="py-3 d-flex justify-content-between w-100">
             <NavLink to="/" className="d-none d-lg-block">
               <Navbar.Brand>Desktop</Navbar.Brand>
             </NavLink>
@@ -33,7 +33,7 @@ function NavMenu() {
               </NavLink>
             </div>
             <NavLink to="/login">Login</NavLink>
-          </div>
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
