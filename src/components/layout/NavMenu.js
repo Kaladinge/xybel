@@ -1,22 +1,28 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import logo from "../../images/xybel-logo.png";
 
 function NavMenu() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" className="py-0">
       <Container>
         <NavLink to="/" className="d-lg-none">
           <Navbar.Brand>Mobile</Navbar.Brand>
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="py-3 d-flex justify-content-between w-100">
-            <NavLink to="/" className="d-none d-lg-block">
-              <Navbar.Brand>Desktop</Navbar.Brand>
-            </NavLink>
-            <div>
-              <NavLink to="/modules" className="me-5">
+          <Nav className=" d-flex justify-content-between w-100">
+            <Navbar.Brand className="d-none d-lg-block border">
+              <img
+                src={logo}
+                alt="desktop-logo"
+                className="desktop-logo--image"
+              />
+            </Navbar.Brand>
+
+            <div className="border align-items-center">
+              <NavLink to="/modules" className="mx-5 border">
                 Modules
               </NavLink>
               <NavLink to="/services" className="me-5">
