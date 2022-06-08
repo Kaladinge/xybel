@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./sass/style.scss";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavMenu from "./components/layout/NavMenu";
+import { Container } from "react-bootstrap";
+import HomePage from "./components/home/HomePage";
+import ModulesPage from "./components/modules/ModulesPage";
+import ServicesPage from "./components/services/ServicesPage";
+import PricingPage from "./components/pricing/PricingPage";
+import BlogPage from "./components/blog/BlogPage";
+import ContactPage from "./components/contact/ContactPage";
+import LoginPage from "./components/login/LoginPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <div className="wrapper">
+          <NavMenu />
+          <Container className="container">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/modules" element={<ModulesPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/login" element={<LoginPage />} />
+            </Routes>
+          </Container>
+        </div>
+      </Router>
     </div>
   );
 }
