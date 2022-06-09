@@ -12,7 +12,7 @@ export default function ProductList({ products }) {
             <img src={item.img} alt="product" className="w-100" />
             <TertiaryHeading title={item.title} />
             <p>{item.price}</p>
-            <p className="text-success">På nettlager ({item.stock}+)</p>
+            <p className="text-success">På nettlager ({item.inStore}+)</p>
           </div>
         ))}
       </div>
