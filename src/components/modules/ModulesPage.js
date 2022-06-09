@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { api } from "../../data/api";
 import MainHeading from "../layout/headings/MainHeading";
 import SecondaryHeading from "../layout/headings/SecondaryHeading";
+import ProductList from "./ProductList";
 
 function ModulesPage() {
+  const [products, setProducts] = useState(api);
+
   return (
     <Container>
       <Row>
@@ -14,6 +18,7 @@ function ModulesPage() {
             Blodtrykksmåler
           </p>
           <SecondaryHeading title="Blodtrykksmåler" />
+          <ProductList products={products} />
         </Col>
 
         <Col>1 of 3</Col>
