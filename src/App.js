@@ -9,6 +9,7 @@ import PricingPage from "./components/pricing/PricingPage";
 import BlogPage from "./components/blog/BlogPage";
 import ContactPage from "./components/contact/ContactPage";
 import LoginPage from "./components/login/LoginPage";
+import ProductPage from "./components/product/ProductPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/modules" element={<ModulesPage />} />
+              <Route path="/product/:id" element={<ProductPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/pricing" element={<PricingPage />} />

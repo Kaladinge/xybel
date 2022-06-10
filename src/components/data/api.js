@@ -4,6 +4,7 @@ import withings from "../../images/withings.jpg";
 
 export const api = [
   {
+    id: 0,
     img: termometerfabrikken,
     title: "Termometerfabrikken Blodtrykksmåler",
     stars: 2,
@@ -12,6 +13,7 @@ export const api = [
     inStore: 0,
   },
   {
+    id: 1,
     img: beurer,
     title: "Beurer blodtrykksmåler med ECG BM 95",
     stars: 2,
@@ -20,6 +22,7 @@ export const api = [
     inStore: 4,
   },
   {
+    id: 2,
     img: withings,
     title: "Withings Core smart blodtrykksmåler WITBPM550067",
     stars: 4,
