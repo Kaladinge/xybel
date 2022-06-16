@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { api } from "../data/api";
 import MainHeading from "../layout/headings/MainHeading";
 import TertiaryHeading from "../layout/headings/TertiaryHeading";
+import TechnicalTab from "./technical/TechnicalTab";
 
 function ProductPage() {
   const [pictureIndex, setPictureIndex] = useState(0);
@@ -65,7 +66,7 @@ function ProductPage() {
 
         <Tab.Content>
           <Tab.Pane eventKey="dashboard">
-            <TabContent />
+            <TechnicalTab />
           </Tab.Pane>
           <Tab.Pane eventKey="technical">ho</Tab.Pane>
           <Tab.Pane eventKey="risk">ho</Tab.Pane>
