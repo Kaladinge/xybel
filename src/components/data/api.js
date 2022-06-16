@@ -19,7 +19,7 @@ export const api = [
     stars: 2,
     price: "1569 ,-",
     onWeb: 5,
-    inStore: 4,
+    inStore: 0,
   },
   {
     id: 2,
