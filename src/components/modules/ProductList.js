@@ -9,7 +9,7 @@ export default function ProductList({ products }) {
       {products.map((item) => (
         <Col xs={12} md={6} lg={4} key={item.title} className="border bg-white">
           <Link to={`/product/${item.id}`}>
-            <img src={item.img} alt="product" className="w-100" />
+            <img src={item.img[0]} alt="product" className="w-100" />
             <TertiaryHeading title={item.title} />
             <p>{item.price}</p>
             <p className="text-success">På nettlager ({item.inStore}+)</p>

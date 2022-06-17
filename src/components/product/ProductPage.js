@@ -12,16 +12,32 @@ function ProductPage() {
 
   return (
     <>
-      <Row>
+      <Row className="product">
         <Col xs md={7}>
           <p>All &gt; Blodtrykksmåler</p>
           <MainHeading title={api[id].title} />
           <Row>
             <Col xs={3} className="bg-white">
-              hei
+              {api[id].img.map(function (item, index) {
+                return (
+                  <img
+                    key={index}
+                    src={item}
+                    onClick={() => setPictureIndex(index)}
+                    className={`w-100 product--subimage ${
+                      pictureIndex === index
+                        ? "product--subimage-active"
+                        : "none"
+                    }`}
+                  />
+                );
+              })}
             </Col>
             <Col xs={9}>
-              <img src={api[id].img} className="w-100" />
+              <img
+                src={api[id].img[pictureIndex]}
+                className="product--mainimage w-100"
+              />
             </Col>
           </Row>
         </Col>
@@ -45,7 +61,7 @@ function ProductPage() {
       <Tab.Container id="tabs" defaultActiveKey="dashboard">
         <Nav
           variant="pills"
-          className="d-flex justify-content-between flex-row border-top border-bottom mt-3"
+          className="d-flex justify-content-between flex-row border-top border-bottom mt-3 mb-3"
         >
           <Nav.Item>
             <Nav.Link eventKey="dashboard">Dashboard</Nav.Link>
@@ -65,10 +81,10 @@ function ProductPage() {
         </Nav>
 
         <Tab.Content>
-          <Tab.Pane eventKey="dashboard">
+          <Tab.Pane eventKey="dashboard">jo</Tab.Pane>
+          <Tab.Pane eventKey="technical">
             <TechnicalTab />
           </Tab.Pane>
-          <Tab.Pane eventKey="technical">ho</Tab.Pane>
           <Tab.Pane eventKey="risk">ho</Tab.Pane>
           <Tab.Pane eventKey="usability">ho</Tab.Pane>
           <Tab.Pane eventKey="post">ho</Tab.Pane>

@@ -1,0 +1,13 @@
+/* section1 */
+.product--subimage {
+  cursor: pointer;
+
+  &-active {
+  border: 2px solid $success;
+  }
+}
+
+/* section2 */
+.navitem--technical {
+  width: 16%;
+}
