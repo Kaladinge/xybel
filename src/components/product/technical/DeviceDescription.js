@@ -80,7 +80,7 @@ function DeviceDescription() {
                               htmlFor="message"
                               className="text-white mt-3"
                             >
-                              Description
+                              General Description of a Device
                             </Form.Label>
                             <Form.Control
                               {...register("description")}
