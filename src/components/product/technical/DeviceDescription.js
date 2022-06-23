@@ -5,6 +5,7 @@ import { Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { fieldApi } from "../../data/api";
 
 const schema = yup.object().shape({
   description: yup
@@ -16,14 +17,19 @@ const schema = yup.object().shape({
 
 function DeviceDescription() {
   const [displayModalForm, setDisplayModalForm] = useState(false);
+  const [modalIndex, setModalIndex] = useState(0);
 
   function onSubmit(data) {
     console.log(data);
   }
 
-  function displayModal() {
-    console.log("hi");
+  function displayModal(event, index) {
+    setModalIndex(index);
+
     setDisplayModalForm(!displayModalForm);
+    if (event.target.localName === "li") {
+      setDisplayModalForm(true);
+    }
   }
 
   const {
@@ -48,92 +54,65 @@ function DeviceDescription() {
               <li>
                 DEVICE DESCRIPTION AND SPECIFICATION
                 <ul>
-                  <li>
+                  {fieldApi.map((category, index) => (
+                    <li key={category.id}>
+                      <Row>
+                        <Col md={10}>
+                          <h5>{category.title}</h5>
+                          <p>{category.info}</p>
+                        </Col>
+                        <Col md={2}>
+                          <img
+                            onClick={(event) => displayModal(event, index)}
+                            src={editIcon}
+                            className="w-25"
+                          />
+                        </Col>
+                      </Row>
+                    </li>
+                  ))}
+                </ul>
+                <div
+                  className={`modal ${displayModalForm ? "d-block" : "d-none"}`}
+                >
+                  <span
+                    onClick={(event) => displayModal(event, 0)}
+                    className="modal--close "
+                    alt="close icon"
+                  >
+                    &times;
+                  </span>
+                  <div className="modal--content bg-secondary p-3">
                     <Row>
-                      <Col md={10}>
-                        <h5>(a) General description of device </h5>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua. Ut enim ad minim veniam, quis
-                          nostrud exercitation ullamco laboris nisi ut aliquip
-                          ex ea commodo consequat. Duis aute irure dolor in
-                          reprehenderit in voluptate velit esse cillum dolore eu
-                          fugiat nulla pariatur. Excepteur sint occaecat
-                          cupidatat non proident, sunt in culpa qui officia
-                          deserunt mollit anim id est laborum.
-                        </p>
-                        <div
-                          className={`modal ${
-                            displayModalForm ? "d-block" : "d-none"
-                          }`}
-                        >
-                          <span
-                            onClick={displayModal}
-                            className="modal--close "
-                            alt="close icon"
-                          >
-                            &times;
-                          </span>
-                          <div className="modal--content">
-                            <Form.Label
-                              htmlFor="message"
-                              className="text-white mt-3"
+                      <Col>
+                        <h5>Navigation</h5>
+                        <ul>
+                          {fieldApi.map((item, index) => (
+                            <li
+                              key={item.id}
+                              onClick={(event) => displayModal(event, index)}
+                              className={`p-2 rounded ${
+                                index === modalIndex ? "bg-white" : ""
+                              }`}
                             >
-                              General Description of a Device
-                            </Form.Label>
-                            <Form.Control
-                              {...register("description")}
-                              id="description"
-                              placeholder="Max 200 words"
-                            />
-                            {errors.description && (
-                              <div className="mb-3 text-danger">
-                                {errors.description.message}
-                              </div>
-                            )}
-                          </div>
+                              {item.title}
+                            </li>
+                          ))}
+                        </ul>
+                      </Col>
+                      <Col>
+                        <h5 className="text-center">Info</h5>
+                        <p>{fieldApi[modalIndex].info}</p>
+                      </Col>
+                      <Col>
+                        <h5 className="text-center">Video</h5>
+                        <div className="p-5 border bg-white">
+                          {fieldApi[modalIndex].video}
                         </div>
                       </Col>
-                      <Col md={2}>
-                        <img
-                          onClick={displayModal}
-                          src={editIcon}
-                          className="w-25"
-                        />
-                      </Col>
                     </Row>
-                  </li>
-                  <li>
-                    <Row>
-                      <Col md={10}>
-                        <h5> (b) Intende Purpose </h5>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua. Ut en
-                        </p>
-                      </Col>
-                      <Col md={2}>
-                        <img src={editIcon} className="w-25" />
-                      </Col>
-                    </Row>
-                  </li>
-                  <li>
-                    <Row>
-                      <Col md={10}>
-                        <h5> (c) Intended User </h5>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt
-                        </p>
-                      </Col>
-                      <Col md={2}>
-                        <img src={editIcon} className="w-25" />
-                      </Col>
-                    </Row>
-                  </li>
-                </ul>
+                  </div>
+                </div>
               </li>
             </ol>
           </Form>
