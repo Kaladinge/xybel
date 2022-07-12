@@ -77,14 +77,14 @@ function DeviceDescription() {
                 >
                   <span
                     onClick={(event) => displayModal(event, 0)}
-                    className="modal--close "
+                    className="modal--close"
                     alt="close icon"
                   >
                     &times;
                   </span>
-                  <div className="modal--content bg-secondary p-3">
+                  <div className="modal--content p-3">
                     <Row>
-                      <Col>
+                      <Col md={3}>
                         <h5>Navigation</h5>
                         <ul>
                           {fieldApi.map((item, index) => (
@@ -100,14 +100,24 @@ function DeviceDescription() {
                           ))}
                         </ul>
                       </Col>
-                      <Col>
-                        <h5 className="text-center">Info</h5>
+                      <Col md={6} className="border-start border-end">
+                        <h5 className="text-center">
+                          {fieldApi[modalIndex].title}
+                        </h5>
                         <p>{fieldApi[modalIndex].info}</p>
+                        <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlTextarea1"
+                        >
+                          <Form.Label>Text</Form.Label>
+                          <Form.Control as="textarea" rows={6} />
+                        </Form.Group>
                       </Col>
-                      <Col>
-                        <h5 className="text-center">Video</h5>
+                      <Col md={3}>
+                        <h5 className="text-center">Help</h5>
+                        <p>Descriptive text about the current field</p>
                         <div className="p-5 border bg-white">
-                          {fieldApi[modalIndex].video}
+                          VIDEO -{fieldApi[modalIndex].video}
                         </div>
                       </Col>
                     </Row>
